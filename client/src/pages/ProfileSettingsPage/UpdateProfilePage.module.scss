@@ -1,0 +1,260 @@
+.wrapper {
+  padding: 0 10px;
+  margin: 50px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.heading {
+  padding: 0 10px;
+
+  font-family: "Poppins";
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 400;
+  text-align: center;
+  color: var(--gray-400);
+
+  b {
+    color: var(--blue-500);
+    font-weight: 400;
+  }
+}
+
+.formWrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.errorBanner {
+  padding: 8px 12px;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gray-700);
+
+  background-color: var(--red-200);
+  box-shadow: 0 0 0 1px var(--red-400);
+  border-radius: 4px;
+}
+
+.successBanner {
+  padding: 8px 12px;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gray-700);
+
+  background-color: var(--green-200);
+  box-shadow: 0 0 0 1px var(--green-400);
+  border-radius: 4px;
+}
+
+.doubleInput {
+  display: flex;
+  gap: 12px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+
+  flex-grow: 1;
+
+  label {
+    margin-bottom: 3px;
+
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--gray-700);
+  }
+
+  input {
+    width: 100%;
+    padding: 8px 10px;
+
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--gray-700);
+
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px var(--gray-300);
+
+    transition: 150ms all ease;
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px var(--blue-500);
+    }
+
+    &.red:focus {
+      box-shadow: 0 0 0 2px var(--red-500);
+    }
+  }
+
+  .errorMessage {
+    margin-top: 2px;
+
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--red-400);
+  }
+}
+
+.formButtonsWrapper {
+  margin-top: 5px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.primaryBtn {
+  padding: 8px 20px;
+
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--white);
+
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: 150ms all ease;
+
+  background-color: var(--blue-500);
+  box-shadow: 0 0 0 1px var(--blue-500);
+
+  &:hover {
+    background-color: var(--blue-600);
+    box-shadow: 0 0 0 1px var(--blue-600);
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--blue-500);
+  }
+
+  &:active {
+    background-color: var(--blue-700);
+  }
+
+  &:disabled {
+    background-color: var(--gray-400);
+    box-shadow: 0 0 0 1px var(--gray-400);
+    cursor: default;
+  }
+}
+
+.dangerBtn {
+  @extend .primaryBtn;
+
+  display: block;
+  width: 100%;
+
+  text-transform: uppercase;
+
+  background-color: var(--red-500);
+  box-shadow: 0 0 0 1px var(--red-500);
+
+  &:hover {
+    background-color: var(--red-600);
+    box-shadow: 0 0 0 1px var(--red-600);
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--red-500);
+  }
+
+  &:active {
+    background-color: var(--red-700);
+  }
+
+  &:disabled {
+    background-color: var(--gray-400);
+    box-shadow: 0 0 0 1px var(--gray-400);
+    cursor: default;
+  }
+}
+
+.actionBtn {
+  @extend .primaryBtn;
+
+  display: block;
+  width: 100%;
+
+  background-color: var(--orange-500);
+  box-shadow: 0 0 0 1px var(--orange-500);
+
+  &:hover {
+    background-color: var(--orange-600);
+    box-shadow: 0 0 0 1px var(--orange-600);
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--orange-500);
+  }
+
+  &:active {
+    background-color: var(--orange-700);
+  }
+
+  &:disabled {
+    background-color: var(--gray-400);
+    box-shadow: 0 0 0 1px var(--gray-400);
+    cursor: default;
+  }
+}
+
+.secondaryBtn {
+  position: relative;
+
+  padding: 2px 4px;
+
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--gray-400);
+
+  border-radius: 4px;
+  background-color: var(--white);
+
+  cursor: pointer;
+
+  transition: 150ms all ease;
+
+  &:hover {
+    color: var(--gray-600);
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--blue-500);
+  }
+}
+
+@media (max-width: 360px) {
+  .doubleInput {
+    flex-direction: column;
+  }
+
+  .buttonsWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}

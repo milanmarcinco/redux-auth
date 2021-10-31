@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap");
+
+// @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap");
+
+// @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+// @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+:root {
+  --white: rgb(255, 255, 255);
+  --black: rgb(0, 0, 0);
+
+  --gray-100: rgb(243, 244, 246);
+  --gray-200: rgb(229, 231, 235);
+  --gray-300: rgb(209, 213, 219);
+  --gray-400: rgb(156, 163, 175);
+  --gray-500: rgb(107, 114, 128);
+  --gray-600: rgb(75, 85, 99);
+  --gray-700: rgb(55, 65, 81);
+  --gray-800: rgb(31, 41, 55);
+  --gray-900: rgb(17, 24, 39);
+
+  --orange-500: #dcb84c;
+  --orange-600: #be8e29;
+  --orange-700: #9f6f14;
+
+  --red-100: rgb(254, 226, 226);
+  --red-200: rgb(254, 202, 202);
+  --red-300: rgb(252, 165, 165);
+  --red-400: rgb(248, 113, 113);
+  --red-500: rgb(239, 68, 68);
+  --red-600: rgb(220, 38, 38);
+  --red-700: rgb(185, 28, 28);
+
+  --green-100: rgb(209, 250, 229);
+  --green-200: rgb(167, 243, 208);
+  --green-300: rgb(110, 231, 183);
+  --green-400: rgb(52, 211, 153);
+  --green-500: rgb(16, 185, 129);
+  --green-600: rgb(5, 150, 105);
+  --green-700: rgb(4, 120, 87);
+  --green-800: rgb(6, 95, 70);
+  --green-900: rgb(6, 78, 59);
+
+  --blue-100: rgb(219, 234, 254);
+  --blue-200: rgb(191, 219, 254);
+  --blue-300: rgb(147, 197, 253);
+  --blue-400: rgb(96, 165, 250);
+  --blue-500: rgb(59, 130, 246);
+  --blue-600: rgb(37, 99, 235);
+  --blue-700: rgb(29, 78, 216);
+  --blue-800: rgb(30, 64, 175);
+  --blue-900: rgb(30, 58, 138);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid transparent;
+
+  box-shadow: none;
+  background-color: transparent;
+
+  font-family: inherit;
+  font-size: inherit;
+  color: #000;
+  text-decoration: 0;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+}
