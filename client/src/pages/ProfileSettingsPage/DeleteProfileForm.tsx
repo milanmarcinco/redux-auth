@@ -18,6 +18,8 @@ const DeleteProfileForm = () => {
   const [error, setError] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
+  const [confirmStep, setConfirmStep] = useState(false);
+
   const refreshToken = useSelector((state) => state.refreshToken);
 
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ const DeleteProfileForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IFormInputs>({});
 
   const deleteSubmitHandler: SubmitHandler<IFormInputs> = useCallback(
@@ -50,25 +53,51 @@ const DeleteProfileForm = () => {
       } catch (err: any) {
         setLoading(false);
         setError(err.message);
+        setConfirmStep(false);
+        reset();
       }
     },
-    [dispatch, refreshToken, history]
+    [dispatch, refreshToken, history, reset]
   );
+
+  const setConfirmTrue = () => {
+    setConfirmStep(true);
+    setError("");
+  };
+
+  const setConfirmFalse = () => {
+    setConfirmStep(false);
+    reset();
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(deleteSubmitHandler)}>
       {error && <p className={styles.errorBanner}>{error}</p>}
 
-      <div className={styles.inputGroup}>
-        <label htmlFor="password">Password</label>
-        <input id="password" type="password" {...register("password", { required: true })} className={styles.red} />
-        {errors.password?.type === "required" && <p className={styles.errorMessage}>Enter your password</p>}
-      </div>
+      {confirmStep && (
+        <div className={styles.inputGroup}>
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password" {...register("password", { required: true })} className={styles.red} />
+          {errors.password?.type === "required" && <p className={styles.errorMessage}>Enter your password</p>}
+        </div>
+      )}
 
       <div className={styles.formButtonsWrapper}>
-        <button className={styles.dangerBtn} type="submit" disabled={loading}>
-          {loading ? "Deleting..." : "DELETE ACCOUNT"}
-        </button>
+        {!confirmStep && (
+          <button onClick={setConfirmTrue} className={styles.dangerBtn} type="button" disabled={loading}>
+            DELETE ACCOUNT
+          </button>
+        )}
+        {confirmStep && (
+          <>
+            <button onClick={setConfirmFalse} className={styles.confirmBtn} type="reset" disabled={loading}>
+              No, cancel
+            </button>
+            <button className={styles.dangerBtn} type="submit" disabled={loading}>
+              {loading ? "Deleting..." : "Yes, delete"}
+            </button>
+          </>
+        )}
       </div>
     </form>
   );

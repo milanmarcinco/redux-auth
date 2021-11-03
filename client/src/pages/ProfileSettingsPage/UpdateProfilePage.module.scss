@@ -191,6 +191,38 @@
   }
 }
 
+.confirmBtn {
+  @extend .primaryBtn;
+
+  display: block;
+  width: 100%;
+
+  text-transform: uppercase;
+
+  background-color: var(--green-500);
+  box-shadow: 0 0 0 1px var(--green-500);
+
+  &:hover {
+    background-color: var(--green-600);
+    box-shadow: 0 0 0 1px var(--green-600);
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--green-500);
+  }
+
+  &:active {
+    background-color: var(--green-700);
+  }
+
+  &:disabled {
+    background-color: var(--gray-400);
+    box-shadow: 0 0 0 1px var(--gray-400);
+    cursor: default;
+  }
+}
+
 .actionBtn {
   @extend .primaryBtn;
 
