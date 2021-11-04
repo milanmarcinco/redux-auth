@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import isEmail from "validator/lib/isEmail";
@@ -24,8 +24,6 @@ interface IFormInputs {
 const RegisterPage = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const history = useHistory();
 
   const dispatch = useDispatch();
 
@@ -61,14 +59,12 @@ const RegisterPage = () => {
             user,
           })
         );
-
-        history.push("/dashboard");
       } catch (err: any) {
         setLoading(false);
         setError(err.message);
       }
     },
-    [dispatch, history]
+    [dispatch]
   );
 
   return (
@@ -91,6 +87,7 @@ const RegisterPage = () => {
                 maxLength: { value: 20, message: "Your first name is too long" },
                 validate: (v) => isAlpha(v) || "Your first name contains weird characters",
               })}
+              disabled={loading}
             />
             {errors.firstName && <p className={styles.errorMessage}>{errors.firstName.message}</p>}
           </div>
@@ -104,6 +101,7 @@ const RegisterPage = () => {
                 maxLength: { value: 20, message: "Your last name is too long" },
                 validate: (v) => isAlpha(v) || "Your last name contains weird characters",
               })}
+              disabled={loading}
             />
             {errors.lastName && <p className={styles.errorMessage}>{errors.lastName.message}</p>}
           </div>
@@ -118,6 +116,7 @@ const RegisterPage = () => {
               required: "Enter your nickname",
               maxLength: { value: 20, message: "Your nickname is too long" },
             })}
+            disabled={loading}
           />
           {errors.nickname && <p className={styles.errorMessage}>{errors.nickname.message}</p>}
         </div>
@@ -132,6 +131,7 @@ const RegisterPage = () => {
               maxLength: { value: 50, message: "Your email address is too long" },
               validate: (v) => isEmail(v) || "Enter a valid email address",
             })}
+            disabled={loading}
           />
           {errors.email && <p className={styles.errorMessage}>{errors.email.message}</p>}
         </div>
@@ -146,6 +146,7 @@ const RegisterPage = () => {
               minLength: { value: 8, message: "Password should be atleast 8 characters long" },
               maxLength: { value: 50, message: "Your password is too long" },
             })}
+            disabled={loading}
           />
           {errors.password && <p className={styles.errorMessage}>{errors.password.message}</p>}
         </div>
@@ -159,6 +160,7 @@ const RegisterPage = () => {
               required: "Enter your password",
               validate: (v) => getValues("password") === v || "Passwords don't match",
             })}
+            disabled={loading}
           />
           {errors.passwordRepeat && <p className={styles.errorMessage}>{errors.passwordRepeat.message}</p>}
         </div>
@@ -167,7 +169,13 @@ const RegisterPage = () => {
           <button className={styles.signUpBtn} type="submit" disabled={loading}>
             {loading ? "Loading..." : "Create new account"}
           </button>
-          <Link className={styles.logInLink} to="/login">
+          <Link
+            className={styles.logInLink}
+            to="/login"
+            style={{
+              pointerEvents: loading ? "none" : "auto",
+            }}
+          >
             or just log in
           </Link>
         </div>

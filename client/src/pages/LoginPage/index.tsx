@@ -55,14 +55,12 @@ const LoginPage = () => {
             user,
           })
         );
-
-        history.push("/dashboard");
       } catch (err: any) {
         setLoading(false);
         setError(err.message);
       }
     },
-    [dispatch, history]
+    [dispatch]
   );
 
   useEffect(() => {
@@ -81,14 +79,19 @@ const LoginPage = () => {
 
         <div className={styles.inputGroup}>
           <label htmlFor="email">Email</label>
-          <input id="email" type="text" {...register("email", { required: true, validate: (v) => isEmail(v) })} />
+          <input
+            id="email"
+            type="text"
+            {...register("email", { required: true, validate: (v) => isEmail(v) })}
+            disabled={loading}
+          />
           {errors.email?.type === "required" && <p className={styles.errorMessage}>Enter your email address</p>}
           {errors.email?.type === "validate" && <p className={styles.errorMessage}>Enter valid email address</p>}
         </div>
 
         <div className={styles.inputGroup}>
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" {...register("password", { required: true })} />
+          <input id="password" type="password" {...register("password", { required: true })} disabled={loading} />
           {errors.password?.type === "required" && <p className={styles.errorMessage}>Enter your password</p>}
         </div>
 
@@ -96,7 +99,13 @@ const LoginPage = () => {
           <button className={styles.logInBtn} type="submit" disabled={loading}>
             {loading ? "Loading..." : "Log In"}
           </button>
-          <Link className={styles.signUpLink} to="/register">
+          <Link
+            className={styles.signUpLink}
+            to="/register"
+            style={{
+              pointerEvents: loading ? "none" : "auto",
+            }}
+          >
             or create an account
           </Link>
         </div>
