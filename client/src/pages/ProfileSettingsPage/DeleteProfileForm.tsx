@@ -49,7 +49,10 @@ const DeleteProfileForm = () => {
         setLoading(false);
 
         dispatch(logOut());
-        history.push("/login", { success: "Your account was successfully deleted" });
+
+        setTimeout(() => {
+          history.push("/login", { success: "Your account was successfully deleted" });
+        }, 0);
       } catch (err: any) {
         setLoading(false);
         setError(err.message);

@@ -34,7 +34,10 @@ const LogOutAllButton = () => {
       setLoading(false);
 
       dispatch(logOut());
-      history.push("/login", { success: "Successfully logged out from all devices" });
+
+      setTimeout(() => {
+        history.push("/login", { success: "Successfully logged out from all devices" });
+      }, 0);
     } catch (err: any) {
       setLoading(false);
       setError(err.message);

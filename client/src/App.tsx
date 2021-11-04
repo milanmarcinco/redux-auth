@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";
@@ -14,6 +14,8 @@ import useSelector from "./hooks/useSelector";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
+
+  const location = useLocation();
 
   return (
     <>
@@ -37,7 +39,16 @@ function App() {
         <Route path="/login">{isLoggedIn ? <Redirect to="/" /> : <LoginPage />}</Route>
 
         <Route path="*">
-          <Redirect to="/" />
+          {isLoggedIn ? (
+            <Redirect to="/" />
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login",
+                state: { from: location },
+              }}
+            />
+          )}
         </Route>
       </Switch>
     </>

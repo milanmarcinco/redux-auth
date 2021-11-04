@@ -47,7 +47,9 @@ const Navbar = () => {
         setLogOutLoading(false);
 
         dispatch(logOut());
-        history.push("/login", { success: "Successfully logged out" });
+        setTimeout(() => {
+          history.push("/login", { success: "Successfully logged out" });
+        }, 0);
       } catch (err) {
         setLogOutLoading(false);
       }
@@ -61,7 +63,7 @@ const Navbar = () => {
         <nav>
           <ul className={styles.nav}>
             <li>
-              <NavLink to="/dashboard" className={styles.navItem}>
+              <NavLink to="/" className={styles.navItem}>
                 Dashboard
               </NavLink>
             </li>

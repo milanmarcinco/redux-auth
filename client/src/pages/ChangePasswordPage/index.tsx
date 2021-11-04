@@ -50,7 +50,10 @@ const ChangePasswordPage = () => {
         setLoading(false);
 
         dispatch(logOut());
-        history.push("/login", { success: "Your password was updated" });
+
+        setTimeout(() => {
+          history.push("/login", { success: "Your password was updated" });
+        }, 0);
       } catch (err: any) {
         setLoading(false);
         setError(err.message);
