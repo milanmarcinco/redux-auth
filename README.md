@@ -13,10 +13,10 @@ The goal of this project was to create a full-stack JWT authentication system wi
 ---
 
 ### Setup
-1. Install required dependencies in the root app-redux/ folder, server and client folder using `yarn install`
+1. Install required dependencies in the root redux-auth/ folder, server and client folder using `yarn install`
 2. Run a MongoDB database docker container using `docker run --name mongodb -p 27017:27017 -d mongo`
-3. In the app-redux/server directory rename the `.env.sample` file to `.env` and fill in the required environment variables
-4. In the root app-redux/ directory run `yarn dev` to run the development server for both frontend and backend
+3. In the redux-auth/server directory rename the `.env.sample` file to `.env` and fill in the required environment variables
+4. In the root redux-auth/ directory run `yarn dev` to run the development server for both frontend and backend
 
 Open http://localhost:3000 with your browser to see the result. Create and account and test all the features that are available. :)
 
